@@ -17,9 +17,8 @@ const Home = () => {
     };
 
     return (
-        <motion.section className="w-screen h-screen"
+        <motion.section className="w-screen h-screen">
 
-        >
             {snap.currentPage === "home" && (
                 <Canvas camera={{ position: [3, 3, 3], fov: 30 }}>
                     <ambientLight intensity={0.5} />

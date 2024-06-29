@@ -17,7 +17,7 @@ const CameraRig = ({ children }) => {
 
 
 
-        group.current.rotation.y += delta * 0.4;
+        group.current.rotation.y += delta * 0.1;
     })
     return <Motion3D ref={group} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 1.5 }}>{children}</Motion3D>;
 }

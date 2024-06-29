@@ -23,7 +23,7 @@ export const Controls = () => {
                             <FaAngleLeft size={20} />
                         </button>
                         <a href="https://www.gothmoneywear.com/shop">
-                            <button className="w-24 h-10 md:w-32 md:h-12 lg:w-40 lg:h-14 bg-[#EC1C23] text-[#fff] rounded mt-2">
+                            <button className="w-24 h-10 md:w-24 md:h-8 lg:w-28 lg:h-10 bg-[#EC1C23] text-[#fff] rounded mt-2">
                                 buy
                             </button>
                         </a>
