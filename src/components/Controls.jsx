@@ -34,7 +34,7 @@ export const Controls = ({ onPreviousShirt, onNextShirt, shirtName }) => {
                     <div className="text-center">
                         <h1 className="text-xl italic font-bold text-white md:text-2xl lg:text-3xl">{currentShirtName}</h1>
                     </div>
-                    <div className="flex items-center justify-center gap-40 mt-4">
+                    <div className="flex items-center justify-center gap-20 md:gap-40 mt-4">
 
                         <button className="p-2 text-black rounded" onClick={handlePreviousShirt}>
                             <FaAngleLeft size={30} />
