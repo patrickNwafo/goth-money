@@ -3,24 +3,25 @@ import state from "../store";
 import { useSnapshot } from "valtio";
 
 
+const shirtNames = ["Goth money gray logo", "Bird Shirt"];
 
-
-export const Controls = ({ onPreviousShirt, onNextShirt, shirtName }) => {
+export const Controls = () => {
     const snap = useSnapshot(state);
+
     const handleBack = () => {
         state.currentPage = "home";
     };
 
     const handlePreviousShirt = () => {
-        state.currentTextureIndex = (state.currentTextureIndex - 1 + 3) % 3;
+        state.currentModelIndex = (state.currentModelIndex - 1 + shirtNames.length) % shirtNames.length;
     };
 
     const handleNextShirt = () => {
-        state.currentTextureIndex = (state.currentTextureIndex + 1) % 3;
+        state.currentModelIndex = (state.currentModelIndex + 1) % shirtNames.length;
     };
 
-    const shirtNames = ["Goth money gray logo", "Red Shirt", "Another Shirt"];
-    const currentShirtName = shirtNames[snap.currentTextureIndex];
+
+    const currentShirtName = shirtNames[snap.currentModelIndex];
 
     return (
         <>
@@ -30,7 +31,7 @@ export const Controls = ({ onPreviousShirt, onNextShirt, shirtName }) => {
                         <FaAngleLeft size={30} />
                     </button>
                 </div>
-                <div className=" absolute top-[70%]">
+                <div className=" absolute top-[75%] md:top-[70%]">
                     <div className="text-center">
                         <h1 className="text-xl italic font-bold text-white md:text-2xl lg:text-3xl">{currentShirtName}</h1>
                     </div>
@@ -42,7 +43,7 @@ export const Controls = ({ onPreviousShirt, onNextShirt, shirtName }) => {
 
 
                         <a href="https://www.gothmoneywear.com/shop">
-                            <button className="w-24 h-10 md:w-24 md:h-8 lg:w-28 lg:h-10 bg-[#EC1C23] text-[#fff] rounded mt-2">
+                            <button className="w-24 h-10 md:w-24 md:h-8 lg:w-28 lg:h-10 hover:bg-gray-600 bg-[#EC1C23] text-[#fff] rounded mt-2">
                                 buy
                             </button>
                         </a>
@@ -53,16 +54,16 @@ export const Controls = ({ onPreviousShirt, onNextShirt, shirtName }) => {
                         </a>
 
                     </div>
-                    <div className="flex justify-center mt-20">
+                    <div className="flex justify-center mt-10 md:mt-20">
                         <a href="https://www.instagram.com/gothmoneyrcrds/" target="_blank" rel="noopener noreferrer">
                             <button>
-                                <FaTwitter className="mx-2 text-white bg-black rounded-md" size={30} />
+                                <FaTwitter className="mx-2 p-2 text-white bg-black rounded-md" size={30} />
                             </button>
                         </a>
 
                         <a href="https://www.instagram.com/gothmoneyrcrds/" target="_blank" rel="noopener noreferrer">
                             <button>
-                                <FaInstagram className="mx-2 text-white bg-black rounded-md" size={30} />
+                                <FaInstagram className="mx-2 p-2 text-white bg-black rounded-md" size={30} />
                             </button>
                         </a>
                     </div>

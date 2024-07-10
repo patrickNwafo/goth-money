@@ -1,38 +1,23 @@
 
-import React, { useRef } from 'react'
-import * as THREE from 'three';
-import {
-    Decal,
-    useGLTF,
-    useTexture,
-} from "@react-three/drei";
+import React from 'react'
+import { useGLTF } from "@react-three/drei";
 import state from "../store";
 import { useSnapshot } from 'valtio';
-// import { useFrame } from '@react-three/fiber';
-// import { easing } from 'maath';
 
 
+const models = [
+    '/shirt2.glb',
+    '/bird-shirt.glb',
+];
 
 
 const Shirt = (props) => {
-    const { nodes, materials } = useGLTF('/shirt2.glb')
     const snap = useSnapshot(state);
-
-    const originalTexture = materials['Shirt.002'].map;
-
-    const texture1 = useTexture('/textures/bird.png');
-    const texture2 = useTexture('/textures/red2.png');
-    const texture3 = useTexture('/textures/red.png');
-
-    const textures = [originalTexture, texture1, texture2, texture3];
-    const currentTexture = textures[snap.currentTextureIndex];
-
-
+    const { nodes, materials } = useGLTF(models[snap.currentModelIndex]);
 
     return (
         <group {...props} >
             <mesh
-
                 castShadow
                 receiveShadow
                 geometry={nodes.Shirt.geometry}
@@ -42,7 +27,6 @@ const Shirt = (props) => {
                 scale={0.2}
                 dispose={null}
             >
-                <meshStandardMaterial map={currentTexture} />
             </mesh>
         </group>
     )
