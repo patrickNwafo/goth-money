@@ -5,12 +5,15 @@ import Canvas from './canvas'
 import { motion, AnimatePresence } from "framer-motion";
 
 
+
 function App() {
   const snap = useSnapshot(state);
 
   return (
     <>
-      <main className="relative w-full h-screen overflow-hidden transition-all ease-in bg-black">
+      <main className="relative h-full overflow-hidden transition-all ease-in bg-black"
+
+      >
         <AnimatePresence>
           {snap.currentPage === "home" && (
             <motion.div
@@ -31,7 +34,7 @@ function App() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 2 }}
-              className="w-full h-full"
+              className="h-screen"
             >
               <Canvas scaleValue={0.2} />
             </motion.div>

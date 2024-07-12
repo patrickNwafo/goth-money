@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import * as THREE from 'three';
 import { useSnapshot } from "valtio";
 import state from "../store";
+import brickBackground from '/textures/brick.jpg';
 
 
 
@@ -19,37 +20,35 @@ const CanvasModel = () => {
 
 
     return (
+        <div className="w-full h-full"
+            style={{
+                backgroundImage: `url(${brickBackground})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }}
+        >
+            <Canvas>
+                <ambientLight intensity={1} />
+                <OrbitControls />
+                <ScrollControls pages={1} damping={0.1}>
+                    <CameraRig>
+                        <Center>
+                            <Shirt
+                            />
+                        </Center>
+                    </CameraRig>
+                    <Scroll html>
+                        <Controls />
+                    </Scroll>
+                </ScrollControls>
+            </Canvas>
+        </div>
 
-        <Canvas>
-            <ambientLight intensity={1} />
-            <OrbitControls />
-            <ScrollControls pages={1} damping={0.1}>
-                <CameraRig>
-                    <Center>
-                        <Shirt
-                        />
-                    </Center>
-                </CameraRig>
-                <BrickBackground />
-                <Scroll html>
-                    <Controls />
-                </Scroll>
-            </ScrollControls>
-        </Canvas>
 
     )
 }
 
-const BrickBackground = () => {
-    const { scene } = useThree();
 
-    useEffect(() => {
-        const textureLoader = new THREE.TextureLoader();
-        const brickTexture = textureLoader.load('/textures/brick.jpg');
-        scene.background = brickTexture;
-    }, [scene]);
-
-    return null;
-};
 
 export default CanvasModel
